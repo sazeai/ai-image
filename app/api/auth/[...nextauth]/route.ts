@@ -1,4 +1,5 @@
-import NextAuth, { AuthOptions } from "next-auth"
+import NextAuth from "next-auth"
+import { authOptions } from "./authOptions"
 import GoogleProvider from "next-auth/providers/google"
 import { createClient } from '@supabase/supabase-js'
 
