@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { fal } from "@fal-ai/client"
 import { createClient } from '@supabase/supabase-js'
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "../auth/[...nextauth]/route"
+import { authOptions } from "../auth/[...nextauth]/authOptions";
 
 fal.config({
   credentials: process.env.FAL_KEY
