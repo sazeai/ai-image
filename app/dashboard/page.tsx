@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -10,7 +10,7 @@ import { Progress } from "@/components/ui/progress"
 import { Home, CreditCard, History } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-export default function Dashboard() {
+function DashboardContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [showSuccess, setShowSuccess] = useState(false)
@@ -123,5 +123,13 @@ export default function Dashboard() {
         </CardContent>
       </Card>
     </motion.div>
+  )
+}
+
+export default function Dashboard() {
+  return (
+    <Suspense fallback={<div className="container mx-auto p-4">Loading...</div>}>
+      <DashboardContent />
+    </Suspense>
   )
 }
